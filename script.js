@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.getElementById('navLinks');
     const mobileMenu = document.getElementById('mobileMenu');
     const headerNavLinks = document.querySelectorAll('.nav-links a');
-    // إضافة مرجع لشعار الموقع لتحديد السلوك عند النقر عليه
+
     const logoLink = document.querySelector('.logo');
 
     // Function to show/hide pages and scroll to the top
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetPage = document.getElementById(pageId);
         if (targetPage) {
             targetPage.classList.add('active');
-            // التحديث المطلوب: التمرير إلى أعلى الصفحة عند الانتقال لصفحة جديدة
             window.scrollTo(0, 0);
         }
 
@@ -40,10 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.toggle('open');
     });
 
-    // Close mobile menu when a navigation link is clicked (optional, as showPage handles it)
     headerNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // If the mobile menu is open, close it
             if (navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
                 mobileMenu.classList.remove('open');
@@ -51,14 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle logo click to go to home page and scroll to top
-    // بما أن الشعار لديه بالفعل onclick="showPage('home')", فهذه الميزة مضمونة
-    // ولكن يمكن إضافة مستمع حدث صريح لمزيد من التحكم أو إذا تغيرت بنية HTML
+
     if (logoLink) {
         logoLink.addEventListener('click', (event) => {
-            // إذا كان الـ onclick قد تم إزالته من HTML، أزل التعليق عن السطر التالي
-            // event.preventDefault(); // منع السلوك الافتراضي إذا كان الـ href هو #
-            showPage('home'); // تأكد من عرض الصفحة الرئيسية والتمرير لأعلى
+            showPage('home'); 
         });
     }
 
@@ -80,10 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Contact Form Submission (dummy for front-end)
     window.submitContactForm = function(event) {
-        event.preventDefault(); // منع السلوك الافتراضي لإرسال النموذج
+        event.preventDefault(); 
 
-        // هنا يمكنك إضافة كود لإرسال البيانات إلى خادم (باستخدام Fetch API مثلاً)
-        // For now, we'll just show an alert and reset the form.
+        
         alert('تم إرسال رسالتك بنجاح! شكراً لك.');
         document.getElementById('contactForm').reset(); 
     };
