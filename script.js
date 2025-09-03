@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.getElementById('navLinks');
     const mobileMenu = document.getElementById('mobileMenu');
     const headerNavLinks = document.querySelectorAll('.nav-links a');
-
     const logoLink = document.querySelector('.logo');
 
     // Function to show/hide pages and scroll to the top
@@ -48,17 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     if (logoLink) {
         logoLink.addEventListener('click', (event) => {
-            showPage('home'); 
+            showPage('home');
         });
     }
 
     // Initial page load (show home page)
     showPage('home');
 
-
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -73,10 +71,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Contact Form Submission (dummy for front-end)
     window.submitContactForm = function(event) {
-        event.preventDefault(); 
-
-        
+        event.preventDefault();
         alert('تم إرسال رسالتك بنجاح! شكراً لك.');
-        document.getElementById('contactForm').reset(); 
+        document.getElementById('contactForm').reset();
     };
+
+    // ---------------------- Slider Logic Start ----------------------
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (sliderWrapper && prevBtn && nextBtn) {
+        const cards = Array.from(sliderWrapper.querySelectorAll('.slider-card'));
+        
+        // Find the index of the card closest to the center of the slider
+        const findCenteredCardIndex = () => {
+            const wrapperCenter = sliderWrapper.scrollLeft + sliderWrapper.offsetWidth / 2;
+            let closestIndex = 0;
+            let minDiff = Infinity;
+
+            cards.forEach((card, index) => {
+                const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                const diff = Math.abs(cardCenter - wrapperCenter);
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    closestIndex = index;
+                }
+            });
+            return closestIndex;
+        };
+
+        nextBtn.addEventListener('click', () => {
+            const currentIndex = findCenteredCardIndex();
+            const nextIndex = (currentIndex + 1) % cards.length;
+            const nextCard = cards[nextIndex];
+            const targetPos = nextCard.offsetLeft - (sliderWrapper.offsetWidth / 2) + (nextCard.offsetWidth / 2);
+
+            sliderWrapper.scrollTo({
+                left: targetPos,
+                behavior: 'smooth'
+            });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const currentIndex = findCenteredCardIndex();
+            const prevIndex = (currentIndex - 1 + cards.length) % cards.length;
+            const prevCard = cards[prevIndex];
+            const targetPos = prevCard.offsetLeft - (sliderWrapper.offsetWidth / 2) + (prevCard.offsetWidth / 2);
+
+            sliderWrapper.scrollTo({
+                left: targetPos,
+                behavior: 'smooth'
+            });
+        });
+    }
+    // ---------------------- Slider Logic End ----------------------
 });
