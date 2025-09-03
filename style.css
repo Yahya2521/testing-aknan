@@ -1560,3 +1560,369 @@ footer {
         z-index: 1001;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Fix focus outline on all links --- */
+a:focus,
+a:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- content --- */
+
+/* Slider Container */
+.slider-container {
+    background-color: rgba(220, 255, 220, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    margin-bottom: 3rem;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Slider Wrapper */
+.slider-wrapper {
+    display: flex;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.slider-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Individual Cards */
+.slider-card {
+    flex: 0 0 900px; /* عرض أقل شوية للابتوب */
+    height: 340px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    scroll-snap-align: center;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slider-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Card Image Section */
+.card-image {
+    flex-shrink: 0;
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px 0 0 20px;
+    transition: transform 0.3s ease;
+}
+
+.slider-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* Card Text Content */
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1rem 1.5rem;
+    color: #333;
+    height: 100%;
+}
+
+.card-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    word-wrap: break-word;
+}
+
+/* Statistics Section */
+.card-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.2rem;
+}
+
+/* Link Design (Playlist Button) */
+.card-link {
+    margin-top: auto;
+    align-self: flex-start;
+    text-decoration: none;
+    background-color: #2f7731;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-link:hover {
+    background-color: #265f28;
+    transform: translateY(-2px);
+}
+
+/* Navigation Arrows */
+.slider-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.slider-nav button {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #555;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.slider-nav button:hover {
+    background-color: #f0f0f0;
+    border-color: #999;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .slider-container {
+        padding: 1rem;
+    }
+    
+    .slider-wrapper {
+        gap: 1rem;
+        padding-bottom: 1rem;
+    }
+    
+    .slider-card {
+        flex: 0 0 320px; /* عرض مناسب للموبايل */
+        height: 450px; /* ارتفاع أكتر للموبايل */
+        flex-direction: column;
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 180px; /* ارتفاع ثابت للصورة */
+        flex-shrink: 0;
+    }
+    
+    .card-image img {
+        border-radius: 20px 20px 0 0; /* تغيير البوردر للكولومن ليوت */
+    }
+    
+    .card-content {
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .card-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .card-content p {
+        font-size: 1rem;
+    }
+    
+    .card-stats {
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
+    .card-link {
+        align-self: center;
+        margin-top: 1rem;
+        padding: 0.4rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    /* تحسين الأسهم للموبايل */
+    .slider-nav button {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+}
+
+/* تحسين إضافي للشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    .slider-card {
+        flex: 0 0 280px; /* عرض أصغر للشاشات الصغيرة */
+    }
+    
+    .card-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .card-content p {
+        font-size: 0.9rem;
+    }
+}
